@@ -5,6 +5,6 @@
     <br>
     -{{ $msg->email }}
     @component('mail::panel')
-        {{ $msg->msg }}
+        {{ $msg->message }}
     @endcomponent
 @endcomponent

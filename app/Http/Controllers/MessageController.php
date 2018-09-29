@@ -15,10 +15,10 @@ class MessageController extends Controller
     }
     public function store(ContactRequest $request)
     {
-        $message = Message::create($request->only('name', 'email', 'message'));
+        $msg = Message::create($request->only('name', 'email', 'message'));
 
-        $mailable = new ContactMessageCreated($message);
-        Mail::to(config('laracarte.admin_support_email'))->send($mailable);
+        Mail::to(config('laracarte.admin_support_email'))
+            ->send(new ContactMessageCreated($msg));
 
         flashy('Nous vous réponderons dans les plus brefs délais !');
 
